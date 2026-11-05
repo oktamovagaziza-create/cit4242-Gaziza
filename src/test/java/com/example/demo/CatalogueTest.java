@@ -29,4 +29,16 @@ class CatalogueTest {
         assertEquals("1984", books.get(0).getTitle());
         assertEquals("George Orwell", books.get(0).getAuthor());
     }
+
+    @Test
+    void unknownAuthorReturnsEmptyList() {
+        Catalogue catalogue =
+                new Catalogue(new InMemoryBookSource());
+
+        assertEquals(
+                List.of(),
+                catalogue.titlesBy("Unknown Author")
+        );
+    }
+
 }
